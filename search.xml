@@ -49,6 +49,9 @@
 <p><strong>最后再配置 Spring 的监听器</strong>，启动项目自动初始化 Spring 容器。</p>
 <p>8.在 web.xml 配置 Spring 的监听器。</p>
 ]]></content>
+      <tags>
+        <tag>学习</tag>
+      </tags>
   </entry>
   <entry>
     <title>Python100天---第一天</title>
