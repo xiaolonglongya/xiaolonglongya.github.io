@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-02T13:31:55.536Z</updated>
+  <updated>2023-03-03T06:47:13.762Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="http://example.com/2023/03/02/Python100%E5%A4%A9-%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
     <id>http://example.com/2023/03/02/Python100%E5%A4%A9-%E7%AC%AC%E4%B8%80%E5%A4%A9/</id>
     <published>2023-03-02T13:16:18.000Z</published>
-    <updated>2023-03-02T13:31:55.536Z</updated>
+    <updated>2023-03-03T06:47:13.762Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;100天Python—第一天&quot;&gt;&lt;a href=&quot;#100天Python—第一天&quot; class=&quot;headerlink&quot; title=&quot;100天Python—第一天&quot;&gt;&lt;/a&gt;100天Python—第一天&lt;/h1&gt;&lt;p&gt;小龙龙 2023.3.1&lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;100天Python—第一天&quot;&gt;&lt;a href=&quot;#100天Python—第一天&quot; class=&quot;headerlink&quot; title=&quot;100天Python—第一天&quot;&gt;&lt;/a&gt;100天Python—第一天&lt;/h1&gt;&lt;p&gt;邓小龙 2023.3.1&lt;/p&gt;
 &lt;h2</summary>
         
       
@@ -36,7 +36,7 @@
     
     
     
-    <category term="学习" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
     
   </entry>
   
