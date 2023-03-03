@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-03T08:48:22.367Z</updated>
+  <updated>2023-03-03T09:00:16.875Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mybatis+jsp+servlet</title>
+    <link href="http://example.com/2023/03/03/mybatis-jsp-servlet/"/>
+    <id>http://example.com/2023/03/03/mybatis-jsp-servlet/</id>
+    <published>2023-03-03T08:58:58.000Z</published>
+    <updated>2023-03-03T09:00:16.875Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;mybatis-jsp-servlet-Mysql&quot;&gt;&lt;a href=&quot;#mybatis-jsp-servlet-Mysql&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JavaEE" scheme="http://example.com/tags/JavaEE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring MVC</title>
+    <link href="http://example.com/2023/03/03/Spring-MVC/"/>
+    <id>http://example.com/2023/03/03/Spring-MVC/</id>
+    <published>2023-03-03T08:53:58.000Z</published>
+    <updated>2023-03-03T09:00:27.401Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Spring-MVC&quot;&gt;&lt;a href=&quot;#Spring-MVC&quot; class=&quot;headerlink&quot; title=&quot;Spring MVC&quot;&gt;&lt;/a&gt;Spring MVC&lt;/h1&gt;&lt;p&gt;小龙龙 2022.5&lt;/p&gt;
+&lt;h3 id=&quot;项目依赖&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JavaEE" scheme="http://example.com/tags/JavaEE/"/>
+    
+  </entry>
   
   <entry>
     <title>Android应用开发之一个简单的计算器</title>
@@ -68,7 +115,7 @@
     <link href="http://example.com/2023/03/01/SSM%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://example.com/2023/03/01/SSM%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
     <published>2023-03-01T13:49:24.000Z</published>
-    <updated>2023-03-02T13:33:58.031Z</updated>
+    <updated>2023-03-03T09:00:49.265Z</updated>
     
     
       
@@ -84,7 +131,7 @@
     
     
     
-    <category term="学习" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="JavaEE" scheme="http://example.com/tags/JavaEE/"/>
     
   </entry>
   
