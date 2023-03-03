@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Tag: JavaEE |  小龙龙呀</title>
+      <title>Java项目开发环境搭建 |  小龙龙呀</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -60,122 +60,250 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <ul class="ads">
+  <article
+  id="post-Java项目开发环境搭建"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-</ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">#&nbspJavaEE</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Java项目开发环境搭建
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/03/Java%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2023-03-03T13:13:48.000Z" itemprop="datePublished">2023-03-03</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">810</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">3 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/03/mybatis-jsp-servlet/" class="archive-article-date">
-  <time datetime="2023-03-03T08:58:58.000Z" itemprop="datePublished">03/03</time>
-</a>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/03/03/mybatis-jsp-servlet/"
-    >mybatis+jsp+servlet</a> 
-</h2>
+  <h1 id="Java项目开发环境搭建"><a href="#Java项目开发环境搭建" class="headerlink" title="Java项目开发环境搭建"></a>Java项目开发环境搭建</h1><h2 id="下载相关软件"><a href="#下载相关软件" class="headerlink" title="下载相关软件"></a>下载相关软件</h2><p><strong>JDK 17</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">https://www.oracle.com/java/technologies/downloads/</a></p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194354678.png" alt="image-20220607194354678"></p>
+<p><strong>Tomcat</strong> <strong>10</strong></p>
+<p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/">https://tomcat.apache.org/</a></p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194420299.png" alt="image-20220607194420299"></p>
+<p><strong>idea 2021.3</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/#section=windows">https://www.jetbrains.com/idea/download/#section=windows</a></p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194437442.png" alt="image-20220607194437442"></p>
+<p><strong>MAVEN</strong></p>
+<p><a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a></p>
+<h2 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h2><h3 id="JDK安装与配置"><a href="#JDK安装与配置" class="headerlink" title="JDK安装与配置"></a>JDK安装与配置</h3><p>安装过程中会出现两次 安装提示 。第一次是安装 jdk ，第二次是安装 jre 。建议两个都安装在同一个java文件夹中的不同文件夹中。（不能都安装在java文件夹的根目录下，jdk和jre安装在同一文件夹会出错），路径一般默认即可，也可以更改不同的路径。</p>
+<p><strong>配置环境变量：右击“我的电脑”–&gt;”高级”–&gt;”环境变量”。</strong></p>
+<p>（1）JAVA_HOME环境变量。<br> 作用：它指向jdk的安装目录，IDEA/Eclipse/NetBeans/Tomcat等软件就是通过搜索JAVA_HOME变量来找到并使用安装好的jdk。<br> 配置方法：在系统变量里点击新建，变量名填写JAVA_HOME，变量值填写JDK的安装路径。（根据自己的安装路径填写）</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194458327.png" alt="image-20220607194458327"></p>
+<p>（2）CLASSPATH环境变量。</p>
+<p>作用：是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPTH来寻找类的。我们需要把jdk安装目录下的lib子目录中的dt.jar和tools.jar设置到CLASSPATH中，当然，当前目录“.”也必须加入到该变量中。<br> 配置方法：<br> 新建CLASSPATH变量，变量值为：.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar 。CLASSPATH变量名字，可以大写也可以小写。注意不要忘记前面的点和中间的分号。且要在英文输入的状态下的分号和逗号。</p>
+<p>CLASSPATH ：.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194520744.png" alt="image-20220607194520744"></p>
+<p>（3）path环境变量</p>
+<p>作用：指定命令搜索路径，在i命令行下面执行命令如javac编译java程序时，它会到PATH变量所指定的路径中查找看是否能找到相应的命令程序。我们需要把jdk安装目录下的bin目录增加到现有的PATH变量中，bin目录中包含经常要用到的可执行文件如javac/java/javadoc等待，设置好PATH变量后，就可以在任何目录下执行javac/java等工具了。</p>
+<p>在系统变量里找到Path变量，这是系统自带的，不用新建。双击Path，由于原来的变量值已经存在，故应在已有的变量后加上“;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin”。注意前面的分号。</p>
+<p>Path：;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194540041.png" alt="image-20220607194540041"></p>
+<p><strong>检验是否配置成功</strong> </p>
+<p>运行cmd 分别输入java，javac， java -version </p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194553118.png" alt="image-20220607194553118"></p>
+<h3 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h3><p>下载Tomcat,并且解压到目录</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194612125.png" alt="image-20220607194612125"></p>
+<p>设置环境变量</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194638160.png" alt="image-20220607194638160"></p>
+<p>保存系统变量的配置之后，按win+R键打开运行，输入cmd，点击确定，在命令行中输入“startup”，启动tomcat服务，启动成功代表环境变量配置成功。</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194656857.png" alt="image-20220607194656857"></p>
+<p>在浏览器中输入“localhost:8080”，出现如下界面，代表tomcat环境搭建成功，如下图所示：</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220607194709998.png" alt="image-20220607194709998"></p>
+<h3 id="在IntelliJ-IDEA配置Tomcat"><a href="#在IntelliJ-IDEA配置Tomcat" class="headerlink" title="在IntelliJ IDEA配置Tomcat"></a>在IntelliJ IDEA配置Tomcat</h3><p>1.点击Run—EDit Configurations…</p>
+<p>2.点击左侧“+”号，找到Tomcat Server—Local（若是没有找到Tomcat Server 可以点击最后一行 34 items more）</p>
+<p>3.在Tomcat Server -&gt; Unnamed -&gt; Server -&gt; Application server项目下，点击 Configuration ，找到本地 Tomcat 服务器，再点击 OK按钮。</p>
  
-
-    </header>
-    
-    
+      <!-- reward -->
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/03/Spring-MVC/" class="archive-article-date">
-  <time datetime="2023-03-03T08:53:58.000Z" itemprop="datePublished">03/03</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/03/03/Spring-MVC/"
-    >Spring MVC</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/01/SSM%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  <time datetime="2023-03-01T13:49:24.000Z" itemprop="datePublished">03/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/03/01/SSM%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"
-    >SSM环境搭建</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
-
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
+    
 
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/03/Java%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/03/Python100%E5%A4%A9-%E7%AC%AC%E4%BA%8C%E5%A4%A9/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Python100天---第二天
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/03/mybatis-jsp-servlet/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">mybatis+jsp+servlet</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "Td1HGOFH6cC5jZBNxXKbrmE2VKQGWKJPYWs8z6c9hKENfb3L0l9jOS8FBMfIzHsQ-cn-n1",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
   
+    
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -320,6 +448,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

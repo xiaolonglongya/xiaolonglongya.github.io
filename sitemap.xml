@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2023/03/02/Python100%E5%A4%A9-%E7%AC%AC%E4%B8%80%E5%A4%A9/</loc>
+    
+    <lastmod>2023-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2023/03/03/Python100%E5%A4%A9-%E7%AC%AC%E4%BA%8C%E5%A4%A9/</loc>
+    
+    <lastmod>2023-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2023/03/01/SSM%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2023-03-03</lastmod>
@@ -29,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/03/02/Python100%E5%A4%A9-%E7%AC%AC%E4%B8%80%E5%A4%A9/</loc>
+    <loc>http://example.com/2023/03/03/Java%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2023-03-03</lastmod>
     
@@ -124,7 +142,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/JavaEE/</loc>
+    <loc>http://example.com/tags/Java/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
