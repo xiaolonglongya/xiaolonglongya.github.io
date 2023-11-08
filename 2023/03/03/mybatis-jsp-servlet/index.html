@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="个人博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>mybatis+jsp+servlet |  小龙龙呀</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="小龙龙呀" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-mybatis-jsp-servlet"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  mybatis+jsp+servlet
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/03/mybatis-jsp-servlet/" class="article-date">
+  <time datetime="2023-03-03T08:58:58.000Z" itemprop="datePublished">2023-03-03</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">128</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="mybatis-jsp-servlet-Mysql"><a href="#mybatis-jsp-servlet-Mysql" class="headerlink" title="mybatis+jsp+servlet+Mysql"></a>mybatis+jsp+servlet+Mysql</h1><p>小龙龙 2022.4</p>
+<hr>
+<h5 id="实现软件资源管理功能"><a href="#实现软件资源管理功能" class="headerlink" title="实现软件资源管理功能"></a>实现软件资源管理功能</h5><p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220503140609249.png" alt="image-20220503140609249"></p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220503140655040.png" alt="image-20220503140655040"></p>
+<h3 id="项目文件夹"><a href="#项目文件夹" class="headerlink" title="项目文件夹"></a>项目文件夹</h3><p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20220503140752337.png" alt="image-20220503140752337"></p>
+<h3 id="依赖jar包坐标"><a href="#依赖jar包坐标" class="headerlink" title="依赖jar包坐标"></a>依赖jar包坐标</h3><blockquote>
+<?xmlversion="1.0" encoding="UTF-8"?>
+<p>&lt;projectxmlns=”<a target="_blank" rel="noopener" href="http://maven.apache.org/POM/4.0.0&quot;">http://maven.apache.org/POM/4.0.0&quot;</a><br>xmlns:xsi=”<a target="_blank" rel="noopener" href="http://www.w3.org/2001/XMLSchema-instance&quot;">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>xsi:schemaLocation=”<a target="_blank" rel="noopener" href="http://maven.apache.org/POM/4.0.0">http://maven.apache.org/POM/4.0.0</a><br><a target="_blank" rel="noopener" href="http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;">http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</a><br><modelVersion>4.0.0</modelVersion><br><groupId>com.zeng</groupId><br><artifactId>demo</artifactId><br><packaging>pom</packaging><br><version>1.0-SNAPSHOT</version><br><modules><br><module>servlet-demo</module><br><module>jsp-demo</module><br><module>jdbc-demo</module><br><module>mybatis-demo1</module><br><module>jsp-servlet-jdbc-mysql</module><br></modules><br><dependencies></p>
+<!--
+https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>javax.servlet-api</artifactId>
+<version>4.0.1</version>
+<scope>provided</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<dependency>
+<groupId>org.mybatis</groupId>
+<artifactId>mybatis</artifactId>
+<version>3.4.6</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-
+java -->
+<dependency>
+<groupId>mysql</groupId>
+<artifactId>mysql-connector-java</artifactId>
+<version>8.0.22</version>
+</dependency>
+<!--
+https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -
+->
+<dependency>
+<groupId>org.apache.logging.log4j</groupId>
+<artifactId>log4j-core</artifactId>
+<version>2.17.1</version>
+</dependency>
+<!-- 
+jsp-->
+<!--
+https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-
+api -->
+<dependency>
+<groupId>javax.servlet.jsp</groupId>
+<artifactId>javax.servlet.jsp-api</artifactId>
+<version>2.3.3</version>
+<scope>provided</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>jstl</artifactId>
+<version>1.2</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/taglibs/standard -->
+<dependency>
+<groupId>taglibs</groupId>
+<artifactId>standard</artifactId>
+<version>1.1.2</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap --
+
+<blockquote>
+<dependency>
+<groupId>org.webjars</groupId>
+<artifactId>bootstrap</artifactId>
+<version>3.3.6</version>
+</dependency>
+</dependencies>
+<properties>
+<maven.compiler.source>8</maven.compiler.source>
+<maven.compiler.target>8</maven.compiler.target>
+</properties>
+</project>
+</blockquote>
+</blockquote>
+<h3 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h3><blockquote>
+<p>create database teach;<br>use teach;<br>create table stype<br>(<br>typeid int primary key auto_increment,<br>typename varchar(100),<br>memo varchar(500)<br>);<br>create table soft<br>(<br>id int primary key auto_increment,<br>softname varchar(100),<br>version varchar(20),<br>description varchar(200),<br>adress varchar(100),<br>typeid int not null,<br>foreign key(typeid) references stype(typeid)<br>);</p>
+</blockquote>
+<h3 id="全局配置文件mybatis-config-xml"><a href="#全局配置文件mybatis-config-xml" class="headerlink" title="全局配置文件mybatis-config.xml"></a>全局配置文件mybatis-config.xml</h3><blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line">&gt;<span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span></span></span><br><span class="line"><span class="meta">&gt;</span>PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://</span></span></span><br><span class="line"><span class="string"><span class="tag">     localhost:3306/teach?serverTimezone=Asia/Shanghai<span class="symbol">&amp;amp;</span>useSSL=false&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;123456&quot;</span>/&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mapper/SoftMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mapper/StypeMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<h3 id="数据库连接"><a href="#数据库连接" class="headerlink" title="数据库连接"></a>数据库连接</h3><p>MybatisUtil.java</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">package</span> com.deng.mybatis.util;</span><br><span class="line">&gt;<span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line">&gt;<span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line">&gt;<span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line">&gt;<span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line">&gt;<span class="keyword">import</span> java.io.InputStream;</span><br><span class="line">&gt;<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisUtil</span> &#123;</span><br><span class="line">&gt;<span class="comment">//定义 SqlSessionFactory</span></span><br><span class="line">&gt;<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">&gt;<span class="keyword">static</span> &#123;</span><br><span class="line">&gt;<span class="comment">//使用 静态块 创建一次 SqlSessionFactory</span></span><br><span class="line">&gt;<span class="keyword">try</span>&#123;</span><br><span class="line"> <span class="type">String</span> <span class="variable">config</span> <span class="operator">=</span> <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line">&gt;<span class="comment">//读取配置文件</span></span><br><span class="line"> <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> Resources.getResourceAsStream(config);</span><br><span class="line">&gt;<span class="comment">//创建 SqlSessionFactory 对象</span></span><br><span class="line"> factory = <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(in);</span><br><span class="line">&gt;&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"> factory = <span class="literal">null</span>;</span><br><span class="line"> e.printStackTrace();</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="comment">/* 获取 SqlSession 对象 */</span></span><br><span class="line">&gt;<span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title function_">getSqlSession</span><span class="params">()</span>&#123;</span><br><span class="line">&gt;<span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">&gt;<span class="keyword">if</span>( factory != <span class="literal">null</span>)&#123;</span><br><span class="line"> session = factory.openSession();</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="keyword">return</span> session;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<h3 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h3><p>Soft.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deng.mybatis.model;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Soft</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String softName;</span><br><span class="line">    <span class="keyword">private</span> String version;</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line">    <span class="keyword">private</span> String adress;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> typeid;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Soft</span><span class="params">()</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Soft</span><span class="params">(<span class="type">int</span> id,String softname, String version, String</span></span><br><span class="line"><span class="params">            description, String adress, <span class="type">int</span> typeid)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.id=id;</span><br><span class="line">        <span class="built_in">this</span>.softName =softname;</span><br><span class="line">        <span class="built_in">this</span>.version=version;</span><br><span class="line">        <span class="built_in">this</span>.description=description;</span><br><span class="line">        <span class="built_in">this</span>.adress=adress;</span><br><span class="line">        <span class="built_in">this</span>.typeid=typeid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Soft</span><span class="params">(String softname, String version, String</span></span><br><span class="line"><span class="params">            description, String adress, <span class="type">int</span> typeid)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.softName =softname;</span><br><span class="line">        <span class="built_in">this</span>.version=version;</span><br><span class="line">        <span class="built_in">this</span>.description=description;</span><br><span class="line">        <span class="built_in">this</span>.adress=adress;</span><br><span class="line">        <span class="built_in">this</span>.typeid=typeid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSoftName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> softName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSoftName</span><span class="params">(String softName)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.softName = softName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getVersion</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> version;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setVersion</span><span class="params">(String version)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.version = version;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDescription</span><span class="params">(String description)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAdress</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> adress;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAdress</span><span class="params">(String adress)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.adress = adress;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getTypeid</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> typeid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTypeid</span><span class="params">(<span class="type">int</span> typeid)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.typeid = typeid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Soft1.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deng.mybatis.model;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Soft1</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String softName;</span><br><span class="line">    <span class="keyword">private</span> String version;</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line">    <span class="keyword">private</span> String adress;</span><br><span class="line">    <span class="keyword">private</span> Stype stype;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Soft1</span><span class="params">()</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Soft1</span><span class="params">(<span class="type">int</span> id,String softname, String version, String description, String adress, Stype stype)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.id=id;</span><br><span class="line">        <span class="built_in">this</span>.softName =softname;</span><br><span class="line">        <span class="built_in">this</span>.version=version;</span><br><span class="line">        <span class="built_in">this</span>.description=description;</span><br><span class="line">        <span class="built_in">this</span>.adress=adress;</span><br><span class="line">        <span class="built_in">this</span>.stype=stype;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Soft1</span><span class="params">(String softname, String version, String</span></span><br><span class="line"><span class="params">            description, String adress, Stype stype)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.softName =softname;</span><br><span class="line">        <span class="built_in">this</span>.version=version;</span><br><span class="line">        <span class="built_in">this</span>.description=description;</span><br><span class="line">        <span class="built_in">this</span>.adress=adress;</span><br><span class="line">        <span class="built_in">this</span>.stype=stype;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSoftName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> softName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSoftName</span><span class="params">(String softName)</span> &#123;<span class="built_in">this</span>.softName = softName;&#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getVersion</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> version;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setVersion</span><span class="params">(String version)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.version = version;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDescription</span><span class="params">(String description)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAdress</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> adress;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAdress</span><span class="params">(String adress)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.adress = adress;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Stype <span class="title function_">getStype</span><span class="params">()</span> &#123;<span class="keyword">return</span> stype;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStype</span><span class="params">(Stype stype)</span> &#123;<span class="built_in">this</span>.stype = stype;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Stype.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deng.mybatis.model;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Stype</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> typeid;</span><br><span class="line">    <span class="keyword">private</span> String typename;</span><br><span class="line">    <span class="keyword">private</span> String memo;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Stype</span><span class="params">(<span class="type">int</span> typeid,String typename,String memo)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.typeid=typeid;</span><br><span class="line">        <span class="built_in">this</span>.typename=typename;</span><br><span class="line">        <span class="built_in">this</span>.memo=memo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Stype</span><span class="params">(String typename,String memo)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.typename=typename;</span><br><span class="line">        <span class="built_in">this</span>.memo=memo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Stype</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getTypeid</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> typeid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTypeid</span><span class="params">(<span class="type">int</span> typeid)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.typeid = typeid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTypename</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> typename;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTypename</span><span class="params">(String typename)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.typename = typename;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMemo</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> memo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setMemo</span><span class="params">(String memo)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.memo = memo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mapper层接口"><a href="#mapper层接口" class="headerlink" title="mapper层接口"></a>mapper层接口</h3><p>SoftMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deng.mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.model.Soft;</span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.model.Soft1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">SoftMapper</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">insertSoft</span><span class="params">(Soft soft)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">delSoftById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateSoftById</span><span class="params">(Soft soft)</span>;</span><br><span class="line">    List&lt;Soft&gt; <span class="title function_">selAllSofts</span><span class="params">()</span>;</span><br><span class="line">    List&lt;Soft&gt; <span class="title function_">selSoftByName</span><span class="params">(String value)</span>;</span><br><span class="line">    Soft <span class="title function_">selSoftById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">    List&lt;Soft1&gt; <span class="title function_">getSoftsWithType</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SoftMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.deng.mybatis.mapper.SoftMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;softTypeMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;com.deng.mybatis.model.Soft1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;softName&quot;</span> <span class="attr">column</span>=<span class="string">&quot;softname&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;version&quot;</span> <span class="attr">column</span>=<span class="string">&quot;version&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;description&quot;</span> <span class="attr">column</span>=<span class="string">&quot;description&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;adress&quot;</span> <span class="attr">column</span>=<span class="string">&quot;adress&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;stype&quot;</span> <span class="attr">column</span>=<span class="string">&quot;typeid&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;com.deng.mybatis.model.Stype&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;typeid&quot;</span> <span class="attr">column</span>=<span class="string">&quot;typeid&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;typename&quot;</span> <span class="attr">column</span>=<span class="string">&quot;typename&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;memo&quot;</span> <span class="attr">column</span>=<span class="string">&quot;memo&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getSoftsWithType&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;softTypeMap&quot;</span>&gt;</span></span><br><span class="line">        select id,softname,version,description,adress,typename from soft join stype on soft.typeid=stype.typeid;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertSoft&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.deng.mybatis.model.Soft&quot;</span>&gt;</span></span><br><span class="line">        insert into soft(softname,version,description,adress,typeid) values(#&#123;softName&#125;,#&#123;version&#125;,#&#123;description&#125;,#&#123;adress&#125;,#&#123;typeid&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;delSoftById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;integer&quot;</span>&gt;</span></span><br><span class="line">        delete from soft where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateSoftById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.deng.mybatis.model.Soft&quot;</span>&gt;</span></span><br><span class="line">        update soft set softname=#&#123;softName&#125;,version=#&#123;version&#125;,description=#&#123;description&#125;,adress=#&#123;adress&#125;,typeid=#&#123;typeid&#125; where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAllSofts&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.deng.mybatis.model.Soft&quot;</span>&gt;</span></span><br><span class="line">        select * from soft</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selSoftByName&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.deng.mybatis.model.Soft&quot;</span>&gt;</span></span><br><span class="line">        select * from soft where softname like &#x27;%$&#123;value&#125;%&#x27;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selSoftById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.deng.mybatis.model.Soft&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;integer&quot;</span>&gt;</span></span><br><span class="line">        select * from soft where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>StypeMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deng.mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.model.Stype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StypeMapper</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">insertStype</span><span class="params">(Stype stype)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">delStypeById</span><span class="params">(<span class="type">int</span> typeid)</span>;</span><br><span class="line">    Stype <span class="title function_">selAllStypes</span><span class="params">()</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">updateStypeById</span><span class="params">(Stype stype)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>StypeMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.deng.mybatis.mapper.StypeMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertStype&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.deng.mybatis.model.Stype&quot;</span>&gt;</span></span><br><span class="line">        insert into stype(typename ,memo) values(#&#123;typename&#125;,#&#123;memo&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;delStypeById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">        delete from stype where typeid=#&#123;typeid&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateStypeById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.deng.mybatis.model.Stype&quot;</span>&gt;</span></span><br><span class="line">        update stype set typename=#&#123;typename&#125;,memo=#&#123;memo&#125; where typeid=#&#123;typeid&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selAllStypes&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.deng.mybatis.model.Stype&quot;</span>&gt;</span></span><br><span class="line">        select * from stype</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Servlet-SoftServlet-java"><a href="#Servlet-SoftServlet-java" class="headerlink" title="Servlet-SoftServlet.java"></a>Servlet-SoftServlet.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deng.mybatis.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.mapper.SoftMapper;</span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.model.Soft;</span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.model.Soft1;</span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.model.Stype;</span><br><span class="line"><span class="keyword">import</span> com.deng.mybatis.util.MybatisUtil;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.RequestDispatcher;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="meta">@WebServlet(&quot;/&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SoftServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">action</span> <span class="operator">=</span> request.getServletPath();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">switch</span> (action) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;/new&quot;</span>:</span><br><span class="line">                    showNewForm(request, response);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;/insert&quot;</span>:</span><br><span class="line">                    insertSoft(request, response);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;/delete&quot;</span>:</span><br><span class="line">                    deleteSoft(request, response);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;/edit&quot;</span>:</span><br><span class="line">                    showEditForm(request, response);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;/update&quot;</span>:</span><br><span class="line">                    updateSoft(request, response);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    listSoft(request, response);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException ex) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(ex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">listSoft</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span><span class="keyword">throws</span> SQLException, IOException, ServletException &#123;</span><br><span class="line">        SqlSession session=MybatisUtil.getSqlSession();</span><br><span class="line">        List&lt;Soft1&gt;listSoft=session.selectList(<span class="string">&quot;getSoftsWithType&quot;</span>);</span><br><span class="line">        request.setAttribute(<span class="string">&quot;listSoft&quot;</span>, listSoft);</span><br><span class="line">        HttpSession httpSession=request.getSession();</span><br><span class="line">        List&lt;Stype&gt;stypelist=session.selectList(<span class="string">&quot;selAllStypes&quot;</span>);</span><br><span class="line">        httpSession.setAttribute(<span class="string">&quot;stypelist&quot;</span>,stypelist);</span><br><span class="line">        RequestDispatcher dispatcher=</span><br><span class="line">                request.getRequestDispatcher(<span class="string">&quot;/soft-list.jsp&quot;</span>);</span><br><span class="line">        dispatcher.forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">showNewForm</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="type">RequestDispatcher</span> <span class="variable">dispatcher</span> <span class="operator">=</span> request.getRequestDispatcher(<span class="string">&quot;/soft-form.jsp&quot;</span>);</span><br><span class="line">        dispatcher.forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">showEditForm</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> SQLException, ServletException, IOException &#123;</span><br><span class="line">        <span class="type">Soft</span> <span class="variable">existingSoft</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Soft</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> Integer.parseInt(request.getParameter(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">        SqlSession session=MybatisUtil.getSqlSession();</span><br><span class="line">        existingSoft=session.selectOne(<span class="string">&quot;selSoftById&quot;</span>,id);</span><br><span class="line">        <span class="type">RequestDispatcher</span> <span class="variable">dispatcher</span> <span class="operator">=</span> request.getRequestDispatcher(<span class="string">&quot;/soft-form.jsp&quot;</span>);</span><br><span class="line">        request.setAttribute(<span class="string">&quot;soft&quot;</span>, existingSoft);</span><br><span class="line">        dispatcher.forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">insertSoft</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">softname</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;softName&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">version</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;version&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">description</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;description&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">adress</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;adress&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">typeid</span> <span class="operator">=</span> Integer.parseInt(request.getParameter(<span class="string">&quot;typeid&quot;</span>));</span><br><span class="line">        <span class="type">Soft</span> <span class="variable">soft</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Soft</span>(softname,version,description, adress,typeid);</span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> MybatisUtil.getSqlSession();</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> session.insert(<span class="string">&quot;insertSoft&quot;</span>, soft);</span><br><span class="line">        session.commit();</span><br><span class="line">        session.close();</span><br><span class="line">        response.sendRedirect(<span class="string">&quot;list&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">updateSoft</span><span class="params">(HttpServletRequest request,HttpServletResponse response)</span></span><br><span class="line">            <span class="keyword">throws</span> SQLException, IOException&#123;</span><br><span class="line">        <span class="type">Soft</span> <span class="variable">soft</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Soft</span>();</span><br><span class="line">        soft.setId(Integer.parseInt(request.getParameter(<span class="string">&quot;id&quot;</span>)));</span><br><span class="line">        soft.setSoftName(request.getParameter(<span class="string">&quot;softName&quot;</span>));</span><br><span class="line">        soft.setVersion(request.getParameter(<span class="string">&quot;version&quot;</span>));</span><br><span class="line">        soft.setDescription(request.getParameter(<span class="string">&quot;description&quot;</span>));</span><br><span class="line">        soft.setAdress(request.getParameter(<span class="string">&quot;adress&quot;</span>));</span><br><span class="line">        soft.setTypeid(Integer.parseInt(request.getParameter(<span class="string">&quot;typeid&quot;</span>)));</span><br><span class="line">        SqlSession session=MybatisUtil.getSqlSession();</span><br><span class="line">        <span class="type">int</span> i=session.update(<span class="string">&quot;updateSoftById&quot;</span>,soft);</span><br><span class="line">        session.commit();</span><br><span class="line">        session.close();</span><br><span class="line">        response.sendRedirect(<span class="string">&quot;list&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">deleteSoft</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> SQLException, IOException &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> Integer.parseInt(request.getParameter(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">       SqlSession session=MybatisUtil.getSqlSession();</span><br><span class="line">       <span class="type">int</span> i=session.delete(<span class="string">&quot;delSoftById&quot;</span>,id);</span><br><span class="line">       session.commit();</span><br><span class="line">       session.close();</span><br><span class="line">        response.sendRedirect(<span class="string">&quot;list&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSP页面"><a href="#JSP页面" class="headerlink" title="JSP页面"></a>JSP页面</h3><p>soft-list.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="string">&quot;c&quot;</span>%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Soft Management Application&lt;/title&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css&quot;</span> integrity=<span class="string">&quot;sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T&quot;</span> crossorigin=<span class="string">&quot;anonymous&quot;</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;header&gt;</span><br><span class="line">    &lt;nav class=<span class="string">&quot;navbar navbar-expand-md navbar-dark&quot;</span> style=<span class="string">&quot;background-color: skyblue&quot;</span>&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;a href=<span class="string">&quot;#&quot;</span> class=<span class="string">&quot;navbar-brand&quot;</span>&gt;实训平台&lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;ul class=<span class="string">&quot;navbar-nav&quot;</span>&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">&quot;&lt;%=request.getContextPath()%&gt;/slist&quot;</span> class=<span class="string">&quot;nav-link&quot;</span>&gt;类别&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">&quot;&lt;%=request.getContextPath()%&gt;/list&quot;</span> class=<span class="string">&quot;nav-link&quot;</span>&gt;软件&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">&lt;/header&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;div class=<span class="string">&quot;row&quot;</span>&gt;</span><br><span class="line">    &lt;!-- &lt;div class=<span class="string">&quot;alert alert-success&quot;</span> *ngIf=<span class="string">&#x27;message&#x27;</span>&gt;&#123;&#123;message&#125;&#125;</span><br><span class="line">    &lt;/div&gt; --&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">        &lt;h3 class=<span class="string">&quot;text-center&quot;</span>&gt;软件列表&lt;/h3&gt;</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">        &lt;div class=<span class="string">&quot;container text-left&quot;</span>&gt;</span><br><span class="line">            &lt;a href=<span class="string">&quot;&lt;%=request.getContextPath()%&gt;/new&quot;</span> class=<span class="string">&quot;btn btn-success&quot;</span>&gt;增加软件&lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;table class=<span class="string">&quot;table table-bordered&quot;</span>&gt;</span><br><span class="line">            &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;th&gt;ID&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;名称&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;版本&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;简介&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;网址&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;类别&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;操作&lt;/th&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">            &lt;/thead&gt;</span><br><span class="line">            &lt;tbody&gt;</span><br><span class="line">            &lt;!-- <span class="keyword">for</span> (Todo todo: todos) &#123; --&gt;</span><br><span class="line">            &lt;c:forEach <span class="keyword">var</span>=<span class="string">&quot;soft&quot;</span> items=<span class="string">&quot;$&#123;listSoft&#125;&quot;</span>&gt;</span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;c:out value=<span class="string">&quot;$&#123;soft.id&#125;&quot;</span> /&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;c:out value=<span class="string">&quot;$&#123;soft.softName&#125;&quot;</span> /&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;c:out value=<span class="string">&quot;$&#123;soft.version&#125;&quot;</span> /&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;c:out value=<span class="string">&quot;$&#123;soft.description&#125;&quot;</span> /&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;c:out value=<span class="string">&quot;$&#123;soft.adress&#125;&quot;</span> /&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">&lt;%--                        &lt;c:out value=<span class="string">&quot;$&#123;soft.typeid&#125;&quot;</span>/&gt;--%&gt;</span><br><span class="line">                        &lt;c:out value=<span class="string">&quot;$&#123;soft.stype.typename&#125;&quot;</span>/&gt;</span><br><span class="line">                    &lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;</span><br><span class="line">                        &lt;a href=<span class="string">&quot;edit?id=&lt;c:out value=&#x27;$&#123;soft.id&#125;&#x27; /&gt;&quot;</span>&gt;编辑&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><br><span class="line">                        &lt;a href=<span class="string">&quot;delete?id=&lt;c:out value=&#x27;$&#123;soft.id&#125;&#x27;/&gt;&quot;</span>&gt;删除&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><br><span class="line">                        &lt;a href=<span class="string">&quot;&lt;c:out value=&#x27;$&#123;soft.adress&#125;&#x27; /&gt;&quot;</span>&gt;下载&lt;/a&gt;</span><br><span class="line">                    &lt;/td&gt;                &lt;/tr&gt;</span><br><span class="line">            &lt;/c:forEach&gt;</span><br><span class="line">            &lt;!-- &#125; --&gt;</span><br><span class="line">            &lt;/tbody&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;footer&gt;</span><br><span class="line">    &lt;p align=<span class="string">&quot;center&quot;</span>&gt;Copyright ©<span class="number">2022</span> deng &lt;/p&gt;</span><br><span class="line">&lt;/footer&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>soft-form.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;/head&gt;&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="string">&quot;c&quot;</span>%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Soft Management Application&lt;/title&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css&quot;</span> integrity=<span class="string">&quot;sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T&quot;</span> crossorigin=<span class="string">&quot;anonymous&quot;</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;header&gt;</span><br><span class="line">    &lt;nav class=<span class="string">&quot;navbar navbar-expand-md navbar-dark&quot;</span> style=<span class="string">&quot;background-color: skyblue&quot;</span>&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;a href=<span class="string">&quot;#&quot;</span> class=<span class="string">&quot;navbar-brand&quot;</span>&gt; 软件管理系统&lt;/a&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;ul class=<span class="string">&quot;navbar-nav&quot;</span>&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">&quot;&lt;%=request.getContextPath()%&gt;/list&quot;</span> class=<span class="string">&quot;nav-link&quot;</span>&gt;软件&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">&lt;/header&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;div class=<span class="string">&quot;container col-md-5&quot;</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;card&quot;</span>&gt;</span><br><span class="line">        &lt;div class=<span class="string">&quot;card-body&quot;</span>&gt;</span><br><span class="line">            &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;soft != null&#125;&quot;</span>&gt;</span><br><span class="line">            &lt;form action=<span class="string">&quot;update&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">                &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">                &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;soft == null&#125;&quot;</span>&gt;</span><br><span class="line">                &lt;form action=<span class="string">&quot;insert&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">                    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">                    &lt;caption&gt;</span><br><span class="line">                        &lt;h2&gt;</span><br><span class="line">                            &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;soft != null&#125;&quot;</span>&gt;</span><br><span class="line">                                编辑软件信息</span><br><span class="line">                            &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">                            &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;soft == null&#125;&quot;</span>&gt;</span><br><span class="line">                               增加软件</span><br><span class="line">                            &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">                        &lt;/h2&gt;</span><br><span class="line">                    &lt;/caption&gt;</span><br><span class="line">                    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;soft != null&#125;&quot;</span>&gt;</span><br><span class="line">                        &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;id&quot;</span> value=<span class="string">&quot;&lt;c:out value=&#x27;$&#123;soft.id&#125;&#x27; /&gt;&quot;</span> /&gt;</span><br><span class="line">                    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">                    &lt;fieldset class=<span class="string">&quot;form-group&quot;</span>&gt;</span><br><span class="line">                        &lt;label&gt;软件名&lt;/label&gt; &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;&lt;c:out value=&#x27;$&#123;soft.softName&#125;&#x27; /&gt;&quot;</span> class=<span class="string">&quot;form-control&quot;</span> name=<span class="string">&quot;softName&quot;</span> required=<span class="string">&quot;required&quot;</span>&gt;</span><br><span class="line">                    &lt;/fieldset&gt;</span><br><span class="line">                    &lt;fieldset class=<span class="string">&quot;form-group&quot;</span>&gt;</span><br><span class="line">                        &lt;label&gt;软件版本&lt;/label&gt; &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;&lt;c:out value=&#x27;$&#123;soft.version&#125;&#x27; /&gt;&quot;</span> class=<span class="string">&quot;form-control&quot;</span> name=<span class="string">&quot;version&quot;</span>&gt;</span><br><span class="line">                    &lt;/fieldset&gt;</span><br><span class="line">                    &lt;fieldset class=<span class="string">&quot;form-group&quot;</span>&gt;</span><br><span class="line">                        &lt;label&gt;软件简介&lt;/label&gt; &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;&lt;c:out value=&#x27;$&#123;soft.description&#125;&#x27; /&gt;&quot;</span> class=<span class="string">&quot;form-control&quot;</span> name=<span class="string">&quot;description&quot;</span>&gt;</span><br><span class="line">                    &lt;/fieldset&gt;</span><br><span class="line">                        &lt;fieldset class=<span class="string">&quot;form-group&quot;</span>&gt;</span><br><span class="line">                            &lt;label&gt;软件地址&lt;/label&gt; &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;&lt;c:out value=&#x27;$&#123;soft.adress&#125;&#x27; /&gt;&quot;</span> class=<span class="string">&quot;form-control&quot;</span> name=<span class="string">&quot;adress&quot;</span>&gt;</span><br><span class="line">                        &lt;/fieldset&gt;</span><br><span class="line">                        &lt;fieldset class=<span class="string">&quot;form-group&quot;</span>&gt;</span><br><span class="line">                            &lt;label&gt;软件类型&lt;/label&gt;</span><br><span class="line">                            &lt;select name=<span class="string">&quot;typeid&quot;</span>&gt;</span><br><span class="line">                                &lt;option&gt;-----------&lt;/option&gt;</span><br><span class="line">                                &lt;c:forEach <span class="keyword">var</span>=<span class="string">&quot;stype&quot;</span></span><br><span class="line">                                items=<span class="string">&quot;$&#123;stypelist&#125;&quot;</span>&gt;</span><br><span class="line">                                &lt;option value=<span class="string">&quot;$&#123;stype.typeid&#125;&quot;</span> id=<span class="string">&quot;$&#123;stype.typeid&#125;&quot;</span>&gt;$&#123;stype.typename&#125;&lt;/option&gt;</span><br><span class="line">                                &lt;/c:forEach&gt;</span><br><span class="line">                            &lt;/select&gt;</span><br><span class="line">                        &lt;/fieldset&gt;</span><br><span class="line">                    &lt;button type=<span class="string">&quot;submit&quot;</span> class=<span class="string">&quot;btn btn-success&quot;</span>&gt;提交&lt;/button&gt;</span><br><span class="line">                &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/03/mybatis-jsp-servlet/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/03/Java%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Java项目开发环境搭建
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/03/Spring-MVC/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Spring MVC</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "xUL2H6A5iO7qhsyUdnzIWjLD-gzGzoHsz",
+    app_key: "vrPjFHseUaNKf0UOLkYggSqh",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> long
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="小龙龙呀"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2023/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1974443814&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

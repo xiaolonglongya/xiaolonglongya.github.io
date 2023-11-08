@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="个人博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Python100天---第二天 |  小龙龙呀</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="小龙龙呀" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Python100天-第二天"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python100天---第二天
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/03/Python100%E5%A4%A9-%E7%AC%AC%E4%BA%8C%E5%A4%A9/" class="article-date">
+  <time datetime="2023-03-03T13:56:45.000Z" itemprop="datePublished">2023-03-03</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Python100天—第二天"><a href="#Python100天—第二天" class="headerlink" title="Python100天—第二天"></a>Python100天—第二天</h1><h2 id="第一关：将华氏温度转换为摄氏温度"><a href="#第一关：将华氏温度转换为摄氏温度" class="headerlink" title="第一关：将华氏温度转换为摄氏温度"></a>第一关：将华氏温度转换为摄氏温度</h2><p><strong>相关知识:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">摄氏度 = (华氏度 - 32) / 1.8</span><br></pre></td></tr></table></figure>
+
+<p>那就很简单了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入华氏温度: &#x27;</span>))</span><br><span class="line">c = (f - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;%.1f华氏度 = %.1f摄氏度&#x27;</span> % (f, c))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20230303212440836.png" alt="image-20230303212440836"></p>
+<h2 id="第二关：输入半径计算圆的周长和面积"><a href="#第二关：输入半径计算圆的周长和面积" class="headerlink" title="第二关：输入半径计算圆的周长和面积"></a>第二关：输入半径计算圆的周长和面积</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">radius = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入圆的半径: &#x27;</span>))</span><br><span class="line">perimeter = <span class="number">2</span> * math.pi * radius</span><br><span class="line">area = math.pi * radius * radius</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;周长: %.2f&#x27;</span> % perimeter)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;面积: %.2f&#x27;</span> % area)</span><br></pre></td></tr></table></figure>
+
+<p>具体解释如下：</p>
+<ol>
+<li><code>import math</code>：导入 Python 内置的数学库 math，以便使用其中的圆周率和数学函数。</li>
+<li><code>radius = float(input(&#39;请输入圆的半径: &#39;))</code>：使用 <code>input()</code> 函数接收用户输入的半径值，并使用 <code>float()</code> 函数将其转换为浮点数类型，并将其赋值给变量 <code>radius</code>。</li>
+<li><code>perimeter = 2 * math.pi * radius</code>：根据圆的周长公式 <code>C = 2πr</code>，计算圆的周长，其中 <code>math.pi</code> 表示圆周率，<code>radius</code> 表示半径，计算结果赋值给变量 <code>perimeter</code>。</li>
+<li><code>area = math.pi * radius * radius</code>：根据圆的面积公式 <code>A = πr²</code>，计算圆的面积，其中 <code>math.pi</code> 表示圆周率，<code>radius</code> 表示半径，计算结果赋值给变量 <code>area</code>。</li>
+<li><code>print(&#39;周长: %.2f&#39; % perimeter)</code>：使用字符串格式化输出圆的周长，其中 <code>%</code> 是字符串格式化运算符，<code>&#39;周长: %.2f&#39;</code> 是输出的字符串格式，其中 <code>.2f</code> 表示输出的浮点数保留两位小数，<code>perimeter</code> 表示输出的值。</li>
+<li><code>print(&#39;面积: %.2f&#39; % area)</code>：使用字符串格式化输出圆的面积，其中 <code>%</code> 是字符串格式化运算符，<code>&#39;面积: %.2f&#39;</code> 是输出的字符串格式，其中 <code>.2f</code> 表示输出的浮点数保留两位小数，<code>area</code> 表示输出的值。</li>
+</ol>
+<p>最终运行程序，用户输入圆的半径后，程序将自动计算圆的周长和面积，并输出结果。</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20230303213230525.png" alt="image-20230303213230525"></p>
+<h2 id="第三关：输入年份-如果是闰年输出True-否则输出False"><a href="#第三关：输入年份-如果是闰年输出True-否则输出False" class="headerlink" title="第三关：输入年份 如果是闰年输出True 否则输出False"></a>第三关：输入年份 如果是闰年输出True 否则输出False</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">year = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入年份: &#x27;</span>))</span><br><span class="line"><span class="comment"># 如果代码太长写成一行不便于阅读 可以使用\或()折行</span></span><br><span class="line">is_leap = (year % <span class="number">4</span> == <span class="number">0</span> <span class="keyword">and</span> year % <span class="number">100</span> != <span class="number">0</span> <span class="keyword">or</span></span><br><span class="line">           year % <span class="number">400</span> == <span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(is_leap)</span><br></pre></td></tr></table></figure>
+
+<p>具体解释如下：</p>
+<ol>
+<li><code>year = int(input(&#39;请输入年份: &#39;))</code>：使用 <code>input()</code> 函数接收用户输入的年份，并使用 <code>int()</code> 函数将其转换为整数类型，并将其赋值给变量 <code>year</code>。</li>
+<li><code>is_leap = (year % 4 == 0 and year % 100 != 0 or year % 400 == 0)</code>：根据闰年的定义，如果一个年份是 4 的倍数但不是 100 的倍数，或者是 400 的倍数，就是闰年。本代码使用一个表达式判断输入的年份是否为闰年，该表达式使用了逻辑运算符 <code>and</code> 和 <code>or</code>，其中 <code>and</code> 表示两个条件都要满足才为真，<code>or</code> 表示其中一个条件满足就为真。表达式的结果为布尔值，即 True 或 False，然后将其赋值给变量 <code>is_leap</code>。</li>
+<li><code>print(is_leap)</code>：使用 <code>print()</code> 函数输出变量 <code>is_leap</code> 的值，即输入的年份是否为闰年。</li>
+</ol>
+<p>最终运行程序，用户输入年份后，程序将自动判断该年份是否为闰年，并输出结果。</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20230303213617270.png" alt="image-20230303213617270"></p>
+<h2 id="第四关：运算符的使用"><a href="#第四关：运算符的使用" class="headerlink" title="第四关：运算符的使用"></a>第四关：运算符的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line">b = <span class="number">10</span></span><br><span class="line">c = <span class="number">3</span></span><br><span class="line">d = <span class="number">4</span></span><br><span class="line">e = <span class="number">5</span></span><br><span class="line">a += b</span><br><span class="line">a -= c</span><br><span class="line">a *= d</span><br><span class="line">a /= e</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line"></span><br><span class="line">flag1 = <span class="number">3</span> &gt; <span class="number">2</span></span><br><span class="line">flag2 = <span class="number">2</span> &lt; <span class="number">1</span></span><br><span class="line">flag3 = flag1 <span class="keyword">and</span> flag2</span><br><span class="line">flag4 = flag1 <span class="keyword">or</span> flag2</span><br><span class="line">flag5 = <span class="keyword">not</span> flag1</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;flag1 = &quot;</span>, flag1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;flag2 = &quot;</span>, flag2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;flag3 = &quot;</span>, flag3)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;flag4 = &quot;</span>, flag4)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;flag5 = &quot;</span>, flag5)</span><br><span class="line"><span class="built_in">print</span>(flag1 <span class="keyword">is</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(flag2 <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>太简单，不解释</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20230303213856173.png" alt="image-20230303213856173"></p>
+<h2 id="第五关：字符串常用操作"><a href="#第五关：字符串常用操作" class="headerlink" title="第五关：字符串常用操作"></a>第五关：字符串常用操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&#x27;hello, world!&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串的长度是:&#x27;</span>, <span class="built_in">len</span>(str1))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;单词首字母大写: &#x27;</span>, str1.title())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串变大写: &#x27;</span>, str1.upper())</span><br><span class="line"><span class="comment"># str1 = str1.upper()</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串是不是大写: &#x27;</span>, str1.isupper())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串是不是以hello开头: &#x27;</span>, str1.startswith(<span class="string">&#x27;hello&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串是不是以hello结尾: &#x27;</span>, str1.endswith(<span class="string">&#x27;hello&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串是不是以感叹号开头: &#x27;</span>, str1.startswith(<span class="string">&#x27;!&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;字符串是不是一感叹号结尾: &#x27;</span>, str1.endswith(<span class="string">&#x27;!&#x27;</span>))</span><br><span class="line">str2 = <span class="string">&#x27;- \u9a86\u660a&#x27;</span></span><br><span class="line">str3 = str1.title() + <span class="string">&#x27; &#x27;</span> + str2.lower()</span><br><span class="line"><span class="built_in">print</span>(str3)</span><br></pre></td></tr></table></figure>
+
+<p>具体解释如下：</p>
+<ol>
+<li><code>str1 = &#39;hello, world!&#39;</code>：将字符串 <code>&#39;hello, world!&#39;</code> 赋值给变量 <code>str1</code>。</li>
+<li><code>print(&#39;字符串的长度是:&#39;, len(str1))</code>：使用 <code>len()</code> 函数计算字符串 <code>str1</code> 的长度，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;单词首字母大写: &#39;, str1.title())</code>：使用 <code>title()</code> 方法将字符串中每个单词的首字母大写，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;字符串变大写: &#39;, str1.upper())</code>：使用 <code>upper()</code> 方法将字符串中所有字符变为大写，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;字符串是不是大写: &#39;, str1.isupper())</code>：使用 <code>isupper()</code> 方法判断字符串中所有字符是否都是大写字母，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;字符串是不是以hello开头: &#39;, str1.startswith(&#39;hello&#39;))</code>：使用 <code>startswith()</code> 方法判断字符串是否以指定的子字符串 <code>&#39;hello&#39;</code> 开头，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;字符串是不是以hello结尾: &#39;, str1.endswith(&#39;hello&#39;))</code>：使用 <code>endswith()</code> 方法判断字符串是否以指定的子字符串 <code>&#39;hello&#39;</code> 结尾，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;字符串是不是以感叹号开头: &#39;, str1.startswith(&#39;!&#39;))</code>：使用 <code>startswith()</code> 方法判断字符串是否以指定的字符 <code>&#39;!&#39;</code> 开头，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>print(&#39;字符串是不是一感叹号结尾: &#39;, str1.endswith(&#39;!&#39;))</code>：使用 <code>endswith()</code> 方法判断字符串是否以指定的字符 <code>&#39;!&#39;</code> 结尾，并使用 <code>print()</code> 函数输出结果。</li>
+<li><code>str2 = &#39;- \U9a86\U660a&#39;</code>：将字符串 <code>&#39;- \U9a86\U660a&#39;</code> 赋值给变量 <code>str2</code>，其中 <code>\U9a86\U660a</code> 是 Unicode 字符编码，表示中文姓名“骆昊”。</li>
+<li><code>str3 = str1.title() + &#39; &#39; + str2.lower()</code>：将字符串 <code>str1</code> 使用 <code>title()</code> 方法转换为每个单词首字母大写的形式，然后将其与字符串 <code>str2</code> 全部转换为小写形式拼接起来，赋值给变量 <code>str3</code>。</li>
+<li><code>print(str3)</code>：使用 <code>print()</code> 函数输出变量 <code>str3</code> 的值。</li>
+</ol>
+<p>最终运行程序，将依次输出字符串的长度、单词首字母大写的形式、字符串全部大写的形式、字符串是否全部大写、字符串是否以指定的子字符串开头或结尾、拼接后的字符串。</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20230303214500244.png" alt="image-20230303214500244"></p>
+<h2 id="第六关：使用变量保存数据并进行操作"><a href="#第六关：使用变量保存数据并进行操作" class="headerlink" title="第六关：使用变量保存数据并进行操作"></a>第六关：使用变量保存数据并进行操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">321</span></span><br><span class="line">b = <span class="number">123</span></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"><span class="built_in">print</span>(a * b)</span><br><span class="line"><span class="built_in">print</span>(a / b)</span><br><span class="line"><span class="built_in">print</span>(a // b)</span><br><span class="line"><span class="built_in">print</span>(a % b)</span><br><span class="line"><span class="built_in">print</span>(a ** b)</span><br></pre></td></tr></table></figure>
+
+<p>这段代码定义了两个整型变量a和b，分别赋值为321和123。然后分别进行了加、减、乘、除、整除、取余和幂运算，并将结果打印出来。</p>
+<p><img src="https://cdn.staticaly.com/gh/xiaolonglongya/resources@main/images/image-20230303215247452.png" alt="image-20230303215247452"></p>
+<blockquote>
+<p>题目作者：骆昊</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/03/03/Python100%E5%A4%A9-%E7%AC%AC%E4%BA%8C%E5%A4%A9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/20/Python100%E5%A4%A9-day01-day07/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Python100天---day01~day07
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/03/Java%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Java项目开发环境搭建</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "xUL2H6A5iO7qhsyUdnzIWjLD-gzGzoHsz",
+    app_key: "vrPjFHseUaNKf0UOLkYggSqh",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> long
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="小龙龙呀"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2023/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1974443814&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
