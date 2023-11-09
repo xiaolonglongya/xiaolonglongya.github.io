@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>重学Java之选择排序 |  小龙龙呀</title>
+      <title>重学Java之快速排序 |  小龙龙呀</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -69,7 +69,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-重学Java之选择排序"
+  id="post-重学Java之快速排序"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -80,7 +80,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  重学Java之选择排序
+  重学Java之快速排序
 </h1>
  
 
@@ -88,15 +88,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/11/08/%E9%87%8D%E5%AD%A6Java%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time datetime="2023-11-08T02:26:40.000Z" itemprop="datePublished">2023-11-08</time>
+      <a href="/2023/11/09/%E9%87%8D%E5%AD%A6Java%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="article-date">
+  <time datetime="2023-11-09T02:18:31.000Z" itemprop="datePublished">2023-11-09</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">250</span>
+            <span class="post-count">770</span>
         </span>
     </span>
 
@@ -105,7 +105,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -120,16 +120,34 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="重学Java之选择排序"><a href="#重学Java之选择排序" class="headerlink" title="重学Java之选择排序"></a>重学Java之选择排序</h1><p>什么是选择排序？</p>
-<p>将数组分为两个子集，排序的和未排序的，每一轮从未排序的子集中<strong>选出最小的元素，放入排序子集</strong><br>重复以上步骤，直到整个数组有序</p>
+  <h1 id="重学Java之快速排序"><a href="#重学Java之快速排序" class="headerlink" title="重学Java之快速排序"></a>重学Java之快速排序</h1><p>每一轮排序选择一个基准点(pivot)进行分区</p>
+<p>​    1.让小于基准点的元素的进入一个分区，大于基准点的元素的进入另一个分区</p>
+<p>​    2.当分区完成时，基准点元素的位置就是其最终位置</p>
+<p>在子分区内重复以上过程，直至子分区元素个数少于等于1，这体现的是<strong>分而治之</strong>的思想(divide-and-conquer)</p>
+<h3 id="单边循环快排-lomuto洛穆托分区方案"><a href="#单边循环快排-lomuto洛穆托分区方案" class="headerlink" title="单边循环快排(lomuto洛穆托分区方案)"></a>单边循环快排(lomuto洛穆托分区方案)</h3><p>选择最右元素作为基准点元素</p>
+<p>j指针负责找到比基准点小的元素，一旦找到则与i进行交换</p>
+<p>i指针维护小于基准点元素的边界，也是每次交换的目标索引</p>
+<p>最后基准点与i交换，i即为分区位置</p>
 <p><strong>代码实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选择排序</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">SelectionSort</span><span class="params">(<span class="type">int</span>[] a)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> i;<span class="comment">//表示最小元素的索引</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> s + <span class="number">1</span>; j &lt; a.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[s] &gt; a[j]) &#123;</span><br><span class="line">                s = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s != i) &#123;</span><br><span class="line">            swap(a,s,i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//递归</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> l, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (l &gt;= h) &#123;</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> Partition(a, l, h);</span><br><span class="line">       QuickSort(a, l, p - <span class="number">1</span>);</span><br><span class="line">       QuickSort(a, p + <span class="number">1</span>, h);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//分区</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">Partition</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> l, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">pv</span> <span class="operator">=</span> a[h];<span class="comment">//基准点元素</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l;</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> l; j &lt; h; j++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (a[j] &lt; pv) &#123;</span><br><span class="line">                   swap(a, i, j);</span><br><span class="line">               i++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">           swap(a, h, i);</span><br><span class="line">       System.out.println(Arrays.toString(a) + <span class="string">&quot;  i:&quot;</span> + i);</span><br><span class="line">       <span class="comment">//返回值代表基准点元素的正确索引，用它可以确定下一轮分区的上下边界</span></span><br><span class="line">       <span class="keyword">return</span> i;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//交换</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">       <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">       arr[i] = arr[j];</span><br><span class="line">       arr[j] = temp;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>与冒泡排序比较：</strong></p>
-<p>1.二者平均时间复杂度都是O(n^2)</p>
-<p>2.选择排序一般要快于冒泡，因为其交换次数少</p>
-<p>3.但如果集合有序度高，冒泡优于选择</p>
-<p>4.冒泡属于稳定排序算法，而选择属于不稳定排序</p>
+
+
+<h3 id="双边循环快排-并不完全等价于hoare霍尔分区方案）"><a href="#双边循环快排-并不完全等价于hoare霍尔分区方案）" class="headerlink" title="双边循环快排(并不完全等价于hoare霍尔分区方案）"></a>双边循环快排(并不完全等价于hoare霍尔分区方案）</h3><p>选择最左元素作为基准点元素</p>
+<p>j指针负责从右向左找比基准点小的元素，i指针负责从左向右找比基准点大的元素，一旦找到二者交换，直至i,j相交</p>
+<p>最后基准点与i(此时i与j相等）交换，i即为分区位置</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">partition</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> l, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pv</span> <span class="operator">=</span> a[l];</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> h;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line"><span class="comment">//            j从右往左找比基准点小的</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; a[j] &gt; pv) &#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//            i从左往右找比基准点大的</span></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j &amp;&amp; a[i] &lt;= pv) &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(a, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(a, l, j);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">quick</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> l, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (l &gt;= h) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> partition(a, l, h);</span><br><span class="line">        quick(a, l, p - <span class="number">1</span>);</span><br><span class="line">        quick(a, p + <span class="number">1</span>, h);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//交换</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>基准点在左边，并且先j后i (先找到比基准点小的，再找大的)</p>
+<p>内层while循环必须加上 <strong>i&lt;j</strong> 的条件，防止越界出错,并且通过i查找时条件不能用 &lt; 而要用 <strong>&lt;=</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 	<span class="keyword">while</span> (i &lt; j &amp;&amp; a[j] &gt; pv)</span><br><span class="line"><span class="keyword">while</span> (i &lt; j &amp;&amp; a[i] &lt;= pv)</span><br></pre></td></tr></table></figure>
+
+<p><strong>特点：</strong></p>
+<p>平均时间复杂度是O(n log2 n)，最坏时间复杂度O(n^2)</p>
+<p>数据量较大时，优势非常明显</p>
+<p>属于不稳定排序</p>
  
       <!-- reward -->
       
@@ -200,7 +218,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/11/08/%E9%87%8D%E5%AD%A6Java%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2023/11/09/%E9%87%8D%E5%AD%A6Java%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -213,19 +231,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/2023/11/09/%E9%87%8D%E5%AD%A6Java%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            重学Java之插入排序
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2023/11/08/%E9%87%8D%E5%AD%A6Java%E4%B9%8B%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">重学Java之冒泡排序</div>
+        <div class="article-nav-title">重学Java之插入排序</div>
       </a>
     
   </nav>
